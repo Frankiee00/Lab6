@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
    * the current entry for each journal-entry element.
    */
 
-  let url = ""  // SET URL 
+  let url = "https://cse110lab6.herokuapp.com/entries"  // SET URL 
 
   fetch(url)
-    .then( /* FILL IN RESPONSE HANDLING HERE */ )
+    .then(response => response.json())
     .then(entries => {
       entries.forEach((entry) => {
        
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // CODE GOES HERE vvv
-        
 
+        newPost = document.createElement('journal-entry');
+        newPost.entry = entry;
 
-
-
-
-
+        //adding the post to main, the very end of the main so the bottom
+        let mainTag = document.getElementsByTagName('main')[0];
+        mainTag.appendChild(newPost);
 
         // CODE GOES HERE ^^^
 

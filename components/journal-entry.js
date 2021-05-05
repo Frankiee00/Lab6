@@ -5,7 +5,7 @@ class JournalEntry extends HTMLElement {
 
     // templated HTML content
     const template = document.createElement('template');
-
+     
     template.innerHTML = `
         <style>
             .entry {
@@ -71,6 +71,10 @@ class JournalEntry extends HTMLElement {
     /* 
      * TODO: set the entry title, date, and content fields in this component
      */
+    var memo = this.shadowRoot.querySelector("article");
+    memo.querySelector(".entry-date").textContent = entry.date;
+    memo.querySelector(".entry-content").textContent = entry.content;
+    memo.querySelector(".entry-title").textContent = entry.title;
     
     // CODE GOES HERE
 
@@ -85,8 +89,11 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
-
-
+      entryImage = document.createElement("img");
+      entryImage.classList.add("entry-image");
+      entryImage.alt = entry.image.alt;
+      entryImage.src = entry.image.src;
+      memo.appendChild(entryImage);
 
 
       // CODE GOES HERE ^^^
@@ -111,8 +118,11 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
-
-
+      entryAudio = document.createElement("audio");
+      entryAudio.classList.add("entry-audio");
+      entryAudio.src = entry.audio; //sets the audio source to come from the audio file
+      entryAudio.controls = true; //gives controls to audio
+      memo.appendChild(entryAudio);
 
 
 
